@@ -24,10 +24,10 @@ Login -> Citizen profile -> AI chat -> Scheme/service detection -> Eligibility -
 ## Team
 | Name | Role |
 |---|---|
-| [Leader name] | Team leader |
-| [Name] | [Role] |
-| [Name] | [Role] |
-| [Name] | [Role] |
+| [Leader name] | NARRA BHANU VENKAT CHOWDARY |
+| [Name] | GUTTIKONDA JAGADEESH |
+| [Name] | RAMINENI NITISH |
+| [Name] | ATLURI SASI VARDHAN |
 
 ## Setup
 Instructions will be added as each part is built.
