@@ -17,6 +17,8 @@ const T = {
       "Hello! Tell me what you need: a scholarship, certificate, pension, health cover or farmer support.",
     placeholder: "Ask in English, Telugu or Hindi",
     send: "Send",
+    privacy: "Please do not type Aadhaar numbers or other personal details.",
+    thinking: "Thinking...",
     notFound:
       "I could not find a matching service yet. Try words like scholarship, income certificate, caste certificate, pension, Aarogyasri or farmer.",
     found: "I found these services for you:",
@@ -36,6 +38,8 @@ const T = {
       "నమస్కారం! మీకు ఏమి కావాలో చెప్పండి: స్కాలర్‌షిప్, సర్టిఫికేట్, పెన్షన్, ఆరోగ్య సేవ లేదా రైతు సహాయం.",
     placeholder: "తెలుగు, ఇంగ్లీష్ లేదా హిందీలో అడగండి",
     send: "పంపు",
+    privacy: "ఆధార్ నంబర్ లేదా ఇతర వ్యక్తిగత వివరాలు టైప్ చేయవద్దు.",
+    thinking: "ఆలోచిస్తున్నాను...",
     notFound:
       "సరిపోయే సేవ ఇంకా కనబడలేదు. స్కాలర్‌షిప్, ఆదాయ ధృవపత్రం, కుల ధృవపత్రం, పెన్షన్, ఆరోగ్యశ్రీ లేదా రైతు వంటి పదాలు ప్రయత్నించండి.",
     found: "మీ కోసం ఈ సేవలు కనుగొన్నాను:",
@@ -55,6 +59,8 @@ const T = {
       "नमस्ते! बताइए आपको क्या चाहिए: छात्रवृत्ति, प्रमाणपत्र, पेंशन, स्वास्थ्य सहायता या किसान सहायता।",
     placeholder: "हिंदी, तेलुगु या अंग्रेज़ी में पूछें",
     send: "भेजें",
+    privacy: "कृपया आधार नंबर या अन्य निजी जानकारी न लिखें।",
+    thinking: "सोच रहा हूँ...",
     notFound:
       "अभी कोई मिलती-जुलती सेवा नहीं मिली। छात्रवृत्ति, आय प्रमाणपत्र, जाति प्रमाणपत्र, पेंशन, आरोग्यश्री या किसान जैसे शब्द आज़माएँ।",
     found: "आपके लिए ये सेवाएँ मिलीं:",
@@ -144,6 +150,7 @@ export default function Home() {
   const [lang, setLang] = useState<Lang>("en");
   const [input, setInput] = useState("");
   const [msgs, setMsgs] = useState<Msg[]>([]);
+  const [loading, setLoading] = useState(false);
   const endRef = useRef<HTMLDivElement>(null);
   const t = T[lang];
 
@@ -151,16 +158,35 @@ export default function Home() {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [msgs]);
 
-  function send() {
+  async function send() {
     const q = input.trim();
-    if (!q) return;
-    const found = findServices(q);
-    const reply: Msg =
-      found.length === 0
-        ? { role: "bot", text: t.notFound }
-        : { role: "bot-matches", ids: found.map((s) => s.id) };
-    setMsgs((m) => [...m, { role: "user", text: q }, reply]);
+    if (!q || loading) return;
+    setMsgs((m) => [...m, { role: "user", text: q }]);
     setInput("");
+    setLoading(true);
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: q, lang }),
+      });
+      const data = await res.json();
+      const ids: string[] = Array.isArray(data.ids) ? data.ids : [];
+      const next: Msg[] = [];
+      if (data.reply) next.push({ role: "bot", text: data.reply });
+      if (ids.length > 0) next.push({ role: "bot-matches", ids });
+      if (next.length === 0) next.push({ role: "bot", text: t.notFound });
+      setMsgs((m) => [...m, ...next]);
+    } catch {
+      const found = findServices(q).map((s) => s.id);
+      const fb: Msg =
+        found.length > 0
+          ? { role: "bot-matches", ids: found }
+          : { role: "bot", text: t.notFound };
+      setMsgs((m) => [...m, fb]);
+    } finally {
+      setLoading(false);
+    }
   }
 
   function openService(id: string) {
@@ -240,6 +266,11 @@ export default function Home() {
             </div>
           );
         })}
+        {loading && (
+          <div className="max-w-[85%] rounded-2xl rounded-bl-sm bg-white p-3 text-sm text-slate-500 shadow-sm">
+            {t.thinking}
+          </div>
+        )}
         <div ref={endRef} />
       </div>
 
@@ -254,11 +285,13 @@ export default function Home() {
         />
         <button
           onClick={send}
-          className="h-12 rounded-full bg-[#F4A62A] px-5 text-sm font-bold text-slate-900"
+          disabled={loading}
+          className="h-12 rounded-full bg-[#F4A62A] px-5 text-sm font-bold text-slate-900 disabled:opacity-50"
         >
           {t.send}
         </button>
       </div>
+      <p className="bg-white px-4 pb-3 text-center text-xs text-slate-500">{t.privacy}</p>
     </main>
   );
 }
