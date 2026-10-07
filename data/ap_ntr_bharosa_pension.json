@@ -1,0 +1,53 @@
+{
+  "id": "ap-ntr-bharosa-pension",
+  "name": {"en": "NTR Bharosa Pension", "te": "ఎన్టీఆర్ భరోసా పెన్షన్", "hi": "एनटीआर भरोसा पेंशन"},
+  "also_known_as": ["YSR Pension Kanuka (earlier name)", "Social security pension"],
+  "level": "AP",
+  "category": "Welfare",
+  "type": "scheme",
+  "department": "Department of Rural Development / SERP, Government of Andhra Pradesh",
+  "summary": "Monthly social security pension for old-age persons, widows, persons with disabilities and other listed groups (about 28 categories). It replaced YSR Pension Kanuka in 2024. Paid monthly by direct bank transfer.",
+  "eligibility": {
+    "state": "Andhra Pradesh (permanent resident)",
+    "income_limit_note": "Not found in sources. Confirm; ration card status and category rules may apply.",
+    "by_category": [
+      {"category": "Old age", "rule": "60 years or above", "monthly_inr": 4000, "status": "unverified"},
+      {"category": "Widow", "rule": "18 years or above (older source); needs spouse death certificate", "monthly_inr": 4000, "status": "unverified"},
+      {"category": "Weavers, toddy tappers", "rule": "50 years or above (older source)", "monthly_inr": 4000, "status": "unverified"},
+      {"category": "Disability", "rule": "At least 40% disability (SADAREM certificate); no age limit", "monthly_inr": 6000, "monthly_inr_note": "Up to Rs 15,000 for complete disability", "status": "unverified"},
+      {"category": "Other groups (single women, fishermen, cobblers, ART/HIV, transgender, dappu artists)", "rule": "Category-specific conditions", "monthly_inr": 4000, "status": "unverified"}
+    ]
+  },
+  "documents": [
+    {"name": "Aadhaar card", "why": "Identity and age verification for old-age pension", "if_missing": "Visit an Aadhaar centre"},
+    {"name": "Age proof (where applicable)", "why": "Proves minimum age", "if_missing": "Ask the secretariat what is accepted"},
+    {"name": "Spouse death certificate (widow pension)", "why": "Proves widow status", "if_missing": "Apply to the civil registration office"},
+    {"name": "SADAREM certificate (disability pension)", "why": "Confirms at least 40% benchmark disability", "if_missing": "Get assessed through the disability certification process"},
+    {"name": "Bank account details", "why": "Pension is paid by direct transfer", "if_missing": "Open an Aadhaar-linked account"}
+  ],
+  "steps": [
+    "Go to your Swarna Gramam or Swarna Ward (village/ward secretariat) centre when applications are open",
+    "Submit the application with the documents for your category",
+    "Initial eligibility check, then physical and departmental verification",
+    "If approved, the pension is credited monthly to your bank account"
+  ],
+  "dates": {
+    "latest_window": "07/09/2026 to 16/09/2026 (fresh applications), per a news report. Initial check 17-21 Sept, verification 22-24 Sept 2026.",
+    "note": "That window has passed (today is 07/10/2026). Next window unknown; ask the secretariat."
+  },
+  "fee": null,
+  "helpline": {"phone": "0866-2410017", "note": "From a guide page (Vikaspedia); confirm"},
+  "official_links": [],
+  "official_links_note": "Official pension portal not yet confirmed. Check the AP Seva portal home page, which shows NTR Bharosa pension forms.",
+  "related_services": [],
+  "sources": [
+    "News report on the fresh application window (Sept 2026)",
+    "Vikaspedia, cleartax, outlookmoney and other guide pages (unofficial)"
+  ],
+  "verification": {
+    "links_verified": false,
+    "content_verified": false,
+    "last_verified": null,
+    "open_items": ["official portal link", "income limit and ration card rule", "current amounts", "next application window", "full category list", "exact documents per category"]
+  }
+}
