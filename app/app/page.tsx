@@ -3,6 +3,10 @@
 import { useRef, useEffect, useState } from "react";
 import { findServices, getService, type Lang } from "@/lib/services";
 
+interface InstallEvent extends Event {
+  prompt: () => Promise<void>;
+}
+
 type Msg =
   | { role: "user"; text: string }
   | { role: "bot"; text: string }
@@ -19,6 +23,7 @@ const T = {
     send: "Send",
     privacy: "Please do not type Aadhaar numbers or other personal details.",
     thinking: "Thinking...",
+    install: "Install app",
     notFound:
       "I could not find a matching service yet. Try words like scholarship, income certificate, caste certificate, pension, Aarogyasri or farmer.",
     found: "I found these services for you:",
@@ -40,6 +45,7 @@ const T = {
     send: "పంపు",
     privacy: "ఆధార్ నంబర్ లేదా ఇతర వ్యక్తిగత వివరాలు టైప్ చేయవద్దు.",
     thinking: "ఆలోచిస్తున్నాను...",
+    install: "యాప్ ఇన్‌స్టాల్ చేయండి",
     notFound:
       "సరిపోయే సేవ ఇంకా కనబడలేదు. స్కాలర్‌షిప్, ఆదాయ ధృవపత్రం, కుల ధృవపత్రం, పెన్షన్, ఆరోగ్యశ్రీ లేదా రైతు వంటి పదాలు ప్రయత్నించండి.",
     found: "మీ కోసం ఈ సేవలు కనుగొన్నాను:",
@@ -61,6 +67,7 @@ const T = {
     send: "भेजें",
     privacy: "कृपया आधार नंबर या अन्य निजी जानकारी न लिखें।",
     thinking: "सोच रहा हूँ...",
+    install: "ऐप इंस्टॉल करें",
     notFound:
       "अभी कोई मिलती-जुलती सेवा नहीं मिली। छात्रवृत्ति, आय प्रमाणपत्र, जाति प्रमाणपत्र, पेंशन, आरोग्यश्री या किसान जैसे शब्द आज़माएँ।",
     found: "आपके लिए ये सेवाएँ मिलीं:",
@@ -151,12 +158,25 @@ export default function Home() {
   const [input, setInput] = useState("");
   const [msgs, setMsgs] = useState<Msg[]>([]);
   const [loading, setLoading] = useState(false);
+  const [installEvt, setInstallEvt] = useState<InstallEvent | null>(null);
   const endRef = useRef<HTMLDivElement>(null);
   const t = T[lang];
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [msgs]);
+
+  useEffect(() => {
+    if ("serviceWorker" in navigator && process.env.NODE_ENV === "production") {
+      navigator.serviceWorker.register("/sw.js").catch(() => {});
+    }
+    const onPrompt = (e: Event) => {
+      e.preventDefault();
+      setInstallEvt(e as InstallEvent);
+    };
+    window.addEventListener("beforeinstallprompt", onPrompt);
+    return () => window.removeEventListener("beforeinstallprompt", onPrompt);
+  }, []);
 
   async function send() {
     const q = input.trim();
@@ -291,7 +311,20 @@ export default function Home() {
           {t.send}
         </button>
       </div>
-      <p className="bg-white px-4 pb-3 text-center text-xs text-slate-500">{t.privacy}</p>
+      <div className="bg-white px-4 pb-3 text-center text-xs text-slate-500">
+        <p>{t.privacy}</p>
+        {installEvt && (
+          <button
+            onClick={async () => {
+              await installEvt.prompt();
+              setInstallEvt(null);
+            }}
+            className="mt-2 min-h-11 rounded-full border border-[#1F3A8A] px-4 text-sm font-bold text-[#1F3A8A]"
+          >
+            {t.install}
+          </button>
+        )}
+      </div>
     </main>
   );
 }
