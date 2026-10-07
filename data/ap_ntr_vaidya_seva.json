@@ -1,0 +1,47 @@
+{
+  "id": "ap-ntr-vaidya-seva",
+  "name": {"en": "Dr. NTR Vaidya Seva (formerly Aarogyasri)", "te": "డాక్టర్ ఎన్టీఆర్ వైద్య సేవ (ఆరోగ్యశ్రీ)", "hi": "डॉ. एनटीआर वैद्य सेवा (आरोग्यश्री)"},
+  "also_known_as": ["Aarogyasri", "Dr. YSR Aarogyasri", "NTR Aarogya Seva"],
+  "level": "AP",
+  "category": "Health",
+  "type": "scheme",
+  "department": "Dr. NTR Vaidya Seva Trust (Aarogyasri Health Care Trust), Government of Andhra Pradesh",
+  "summary": "State cashless health scheme for low-income families. The name was restored to Dr. NTR Vaidya Seva in July 2024; many people still search for it as Aarogyasri.",
+  "eligibility": {
+    "state": "Andhra Pradesh (permanent resident)",
+    "income_limit_inr": 500000,
+    "income_limit_note": "Sources say family income below about Rs 5 lakh, or a BPL family with a valid ration (rice) card. Confirm the exact rule.",
+    "exclusions": "Government employees are not eligible, except non-permanent, outsourced or contract staff within the income limit (one source).",
+    "age_limit": "None (one source)"
+  },
+  "benefits": {
+    "cover": "Up to Rs 25 lakh per family per year as a floater (shared by the registered household)",
+    "type": "Cashless treatment at government and empanelled private hospitals for listed diseases and procedures",
+    "ailments_note": "One source mentions 949+ ailments; confirm the current list on the official site"
+  },
+  "documents": [
+    {"name": "Aadhaar card", "why": "Identity and eligibility check", "if_missing": "Visit an Aadhaar centre"},
+    {"name": "Ration (rice) card", "why": "Shows the household and BPL status", "if_missing": "Ask at your village/ward secretariat"},
+    {"name": "Income certificate", "why": "Proves family income is under the limit", "if_missing": "Apply for it first", "linked_service": "ap-income-certificate"},
+    {"name": "Address proof", "why": "Confirms AP residency", "if_missing": "Use any accepted proof; ask the secretariat"}
+  ],
+  "steps": [
+    "Ask the Vaidya Mitra desk at an empanelled hospital to check your eligibility using your registered mobile number or Aadhaar",
+    "If not enrolled, get the Health Card enrollment form (or use an approved online service)",
+    "Submit it with Aadhaar, rice card and income proof",
+    "Get your health card and use it for cashless treatment at empanelled hospitals"
+  ],
+  "fee": null,
+  "official_links": [],
+  "official_links_note": "Official NTR Vaidya Seva website not yet confirmed. Find it and add it here.",
+  "related_services": ["ap-income-certificate"],
+  "sources": [
+    "joinditto.in, policybazaar.com, starhealth.in, sarkariyojana.com, adda247 (all unofficial)"
+  ],
+  "verification": {
+    "links_verified": false,
+    "content_verified": false,
+    "last_verified": null,
+    "open_items": ["official website", "exact eligibility rule (BPL vs Rs 5 lakh income)", "current coverage and ailment list", "exact enrollment steps and documents", "helpline"]
+  }
+}
