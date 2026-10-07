@@ -1,6 +1,10 @@
 {
   "id": "ap-jnanabhumi-scholarship",
-  "name": {"en": "AP Post-Matric Scholarship (Jnanabhumi)", "te": "ఏపీ పోస్ట్-మెట్రిక్ స్కాలర్‌షిప్ (జ్ఞానభూమి)", "hi": "एपी पोस्ट-मैट्रिक छात्रवृत्ति (ज्ञानभूमि)"},
+  "name": {
+    "en": "AP Post-Matric Scholarship (Jnanabhumi)",
+    "te": "ఏపీ పోస్ట్-మెట్రిక్ స్కాలర్‌షిప్ (జ్ఞానభూమి)",
+    "hi": "एपी पोस्ट-मैट्रिक छात्रवृत्ति (ज्ञानभूमि)"
+  },
   "level": "AP",
   "category": "Education",
   "type": "scheme",
@@ -9,15 +13,39 @@
   "eligibility": {
     "state": "Andhra Pradesh",
     "stage": "Post-matric (Class 11 onwards)",
-    "categories": ["SC", "ST", "BC", "EBC", "Minority", "Kapu", "Differently abled"],
+    "categories": [
+      "SC",
+      "ST",
+      "BC",
+      "EBC",
+      "Minority",
+      "Kapu",
+      "Differently abled"
+    ],
     "attendance_rule": "Minimum 75% attendance, tracked digitally",
     "income_limit_note": "Varies by category. Confirm on the portal."
   },
   "income_limits": [
-    {"category": "SC", "limit_inr": 250000, "status": "unverified"},
-    {"category": "BC", "limit_inr": 200000, "status": "unverified"},
-    {"category": "ST", "limit_inr": null, "status": "to research"},
-    {"category": "EBC / Minority / Kapu", "limit_inr": null, "status": "to research"}
+    {
+      "category": "SC",
+      "limit_inr": 250000,
+      "status": "unverified"
+    },
+    {
+      "category": "BC",
+      "limit_inr": 200000,
+      "status": "unverified"
+    },
+    {
+      "category": "ST",
+      "limit_inr": null,
+      "status": "to research"
+    },
+    {
+      "category": "EBC / Minority / Kapu",
+      "limit_inr": null,
+      "status": "to research"
+    }
   ],
   "benefits": {
     "types": [
@@ -27,12 +55,38 @@
     "amounts_note": "Amounts differ across sources (from about Rs 2,000 to Rs 80,000 a year). Do not show a figure until confirmed."
   },
   "documents": [
-    {"name": "Kutumba ID", "why": "The portal uses it to check residency, caste and family income automatically", "if_missing": "Ask at your village/ward secretariat"},
-    {"name": "Caste certificate (digital details)", "why": "Proves SC/ST/BC category", "if_missing": "Apply for it first", "linked_service": "ap-caste-certificate"},
-    {"name": "Income certificate", "why": "Proves family income is under the limit", "if_missing": "Apply for it first", "linked_service": "ap-income-certificate"},
-    {"name": "Aadhaar", "why": "Login, identity and bank linking", "if_missing": "Visit an Aadhaar centre"},
-    {"name": "Aadhaar-linked bank account", "why": "Allowances are paid by direct transfer to the student", "if_missing": "Open an account and link it to Aadhaar"},
-    {"name": "SATS ID (if asked)", "why": "One login option on the portal", "if_missing": "Ask your college"}
+    {
+      "name": "Kutumba ID",
+      "why": "The portal uses it to check residency, caste and family income automatically",
+      "if_missing": "Ask at your village/ward secretariat"
+    },
+    {
+      "name": "Caste certificate (digital details)",
+      "why": "Proves SC/ST/BC category",
+      "if_missing": "Apply for it first",
+      "linked_service": "ap-caste-certificate"
+    },
+    {
+      "name": "Income certificate",
+      "why": "Proves family income is under the limit",
+      "if_missing": "Apply for it first",
+      "linked_service": "ap-income-certificate"
+    },
+    {
+      "name": "Aadhaar",
+      "why": "Login, identity and bank linking",
+      "if_missing": "Visit an Aadhaar centre"
+    },
+    {
+      "name": "Aadhaar-linked bank account",
+      "why": "Allowances are paid by direct transfer to the student",
+      "if_missing": "Open an account and link it to Aadhaar"
+    },
+    {
+      "name": "SATS ID (if asked)",
+      "why": "One login option on the portal",
+      "if_missing": "Ask your college"
+    }
   ],
   "steps": [
     "Open the Jnanabhumi portal (jnanabhumi.ap.gov.in)",
@@ -43,13 +97,23 @@
     "Confirm the details and submit",
     "Track status under 'Print Application Status' using your Aadhaar or application ID"
   ],
-  "dates": {"deadline_note": "Sources conflict: some say 31/10/2026, another says the 2025-26 cycle closed 28/02/2026 and 2026-27 opens soon. Confirm on the portal."},
+  "dates": {
+    "deadline_note": "Sources conflict: some say 31/10/2026, another says the 2025-26 cycle closed 28/02/2026 and 2026-27 opens soon. Confirm on the portal."
+  },
   "fee": null,
-  "helpline": {"note": "Sources list different numbers (1902, 0863-2340142, 08645-274025). Confirm on the portal before showing any."},
+  "helpline": {
+    "note": "Sources list different numbers (1902, 0863-2340142, 08645-274025). Confirm on the portal before showing any."
+  },
   "official_links": [
-    {"label": "Jnanabhumi portal", "url": "https://jnanabhumi.ap.gov.in"}
+    {
+      "label": "Jnanabhumi portal",
+      "url": "https://jnanabhumi.ap.gov.in"
+    }
   ],
-  "related_services": ["ap-income-certificate", "ap-caste-certificate", "nsp-post-matric-scholarship"],
+  "related_services": [
+    "ap-income-certificate",
+    "ap-caste-certificate"
+  ],
   "sources": [
     "indiascholarships.in (AP scholarship pages), unofficial and internally inconsistent"
   ],
@@ -57,6 +121,13 @@
     "links_verified": false,
     "content_verified": false,
     "last_verified": null,
-    "open_items": ["income limits per category", "benefit amounts", "deadline", "helpline", "full document list", "whether NSP registration is also needed"]
+    "open_items": [
+      "income limits per category",
+      "benefit amounts",
+      "deadline",
+      "helpline",
+      "full document list",
+      "whether NSP registration is also needed"
+    ]
   }
 }

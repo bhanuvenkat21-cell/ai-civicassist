@@ -1,0 +1,51 @@
+{
+  "id": "ap-caste-certificate",
+  "name": {"en": "Caste Certificate (Integrated Certificate: Caste, Nativity, DOB)", "te": "కుల ధృవపత్రం (ఇంటిగ్రేటెడ్ సర్టిఫికేట్)", "hi": "जाति प्रमाण पत्र (एकीकृत प्रमाणपत्र)"},
+  "level": "AP",
+  "category": "Certificates",
+  "type": "service",
+  "department": "Revenue (Tahsildar / revenue officials) via Swarna Gramam and Swarna Wardu services",
+  "summary": "In Andhra Pradesh the caste certificate is issued as an Integrated Certificate (Caste, Nativity, Date of Birth) to SC, ST, BC and OC applicants. It is used for education, employment and welfare schemes such as scholarships.",
+  "eligibility": {
+    "state": "Andhra Pradesh",
+    "who": "AP resident belonging to SC, ST, BC or OC community"
+  },
+  "documents": [
+    {"name": "Application form", "why": "Main request", "if_missing": "Get the form from the portal or village/ward secretariat"},
+    {"name": "Caste certificate already issued to a family member", "why": "Shows the family's caste", "if_missing": "Ask the secretariat what is accepted instead"},
+    {"name": "SSC marks memo, DOB extract or transfer certificate", "why": "Proves date of birth", "if_missing": "Get a duplicate from the school or board"},
+    {"name": "Study certificates (Class 1 to 10) or DOB certificate from the GP/Municipal authority", "why": "Proves education and birth details", "if_missing": "Ask the school or the panchayat/municipality"},
+    {"name": "Ration card, EPIC (voter) card or Aadhaar card", "why": "Identity and address", "if_missing": "Use any one of the three"},
+    {"name": "Schedule I to IV (format listed by the department)", "why": "Declaration schedules required by the department", "if_missing": "Ask the secretariat for the format"}
+  ],
+  "upload_rules": "Documents are uploaded as PDFs on the portal",
+  "steps": [
+    "Open the AP Seva portal (apseva.ap.gov.in) and log in as a citizen, or go to your village/ward secretariat",
+    "Select the Caste / Integrated Certificate service under Revenue",
+    "Fill the online application form",
+    "Upload the supporting documents as PDFs",
+    "Pay any charge online, if the portal asks",
+    "Submit; revenue officials verify it (Tahsildar level)",
+    "Track the status on the portal and download the digitally signed certificate"
+  ],
+  "fee": null,
+  "fee_note": "To confirm. Older MeeSeva-based pages say Rs 10. The AP Seva portal sets a charge per service, and the department text I found was unclear.",
+  "processing": {"sla_days": 7, "note": "AP government SOP lists 7 days for first-time issue (partly readable). One guide says 15-30 days. Confirm on the portal."},
+  "validity": null,
+  "official_links": [
+    {"label": "AP Seva portal", "url": "https://apseva.ap.gov.in/#/home"},
+    {"label": "MeeSeva AP", "url": "https://ap.meeseva.gov.in/IMeeSeva2/IMeesevaHome.aspx"}
+  ],
+  "related_services": ["ap-income-certificate", "ap-jnanabhumi-scholarship"],
+  "sources": [
+    "AP government SOP document (vswsonline.ap.gov.in), partly readable",
+    "Srikakulam district site (srikakulam.ap.gov.in) - Integrated Certificate page",
+    "Guide sites: bankbazaar, indiafilings, beincareer, anantamias (unofficial)"
+  ],
+  "verification": {
+    "links_verified": true,
+    "content_verified": false,
+    "last_verified": null,
+    "open_items": ["fee", "exact processing time", "validity", "whether Schedule I to IV is still required", "exact service name on AP Seva"]
+  }
+}
