@@ -1,0 +1,58 @@
+{
+  "id": "ap-annadata-sukhibhava",
+  "name": {"en": "Annadata Sukhibhava - PM Kisan", "te": "అన్నదాత సుఖీభవ - పీఎం కిసాన్", "hi": "अन्नदाता सुखीभव - पीएम किसान"},
+  "level": "AP",
+  "category": "Agriculture",
+  "type": "scheme",
+  "department": "Agriculture Department, Government of Andhra Pradesh",
+  "summary": "Income support for farmer families in Andhra Pradesh: Rs 20,000 a year, made of Rs 6,000 from the central PM-KISAN scheme plus Rs 14,000 from the state, paid in three instalments to an Aadhaar-linked bank account.",
+  "eligibility": {
+    "state": "Andhra Pradesh",
+    "who": "Eligible farmer families; sources mention small, marginal and tenant farmers",
+    "pm_kisan_link": "Rules sit on top of PM-KISAN; being a current PM-KISAN beneficiary appears to be needed (one source)",
+    "income_limit_note": "Not found. Confirm.",
+    "beneficiaries_note": "About 47 lakh farmers were reported eligible after e-KYC (2025 report)"
+  },
+  "benefits": {
+    "total_per_year_inr": 20000,
+    "state_share_inr": 14000,
+    "pm_kisan_share_inr": 6000,
+    "instalments": 3,
+    "first_instalment": "Rs 5,000 state + Rs 2,000 PM-KISAN = Rs 7,000 (reported for the 2026-27 cycle, released about 20/06/2026)",
+    "payment_mode": "Direct transfer to the farmer's Aadhaar-linked bank account"
+  },
+  "documents": [
+    {"name": "Aadhaar-linked bank account", "why": "Money is paid by direct transfer", "if_missing": "Open an account and link it to Aadhaar"},
+    {"name": "PM-KISAN registration details", "why": "Eligibility depends on being a PM-KISAN beneficiary", "if_missing": "Ask at the Rythu Seva Kendra / agriculture office"},
+    {"name": "e-KYC (verification)", "why": "Farmers must complete e-KYC to receive payments", "if_missing": "Complete it at your village agriculture or secretariat centre"},
+    {"name": "Land or tenancy details (for tenant farmers)", "why": "Confirms you cultivate the land", "if_missing": "Ask the agriculture department what is accepted"}
+  ],
+  "steps": [
+    "Check that you are a PM-KISAN beneficiary and that your e-KYC is complete",
+    "There appears to be no separate application; eligible farmers are identified from the records",
+    "Check your name and payment status on the Annadata Sukhibhava portal",
+    "Money is credited in instalments; the state share and the PM-KISAN instalment usually arrive together",
+    "If your name is missing, contact the agriculture department or your village secretariat"
+  ],
+  "dates": {
+    "latest_instalment": "First instalment of 2026-27 released about 20/06/2026; previous one reported around March 2026",
+    "next_instalment": "Unknown; confirm on the portal"
+  },
+  "fee": null,
+  "contact": {"email": "comagr.ap@gmail.com", "note": "From Vikaspedia; confirm"},
+  "official_links": [
+    {"label": "Annadata Sukhibhava portal (reported)", "url": "https://annadathasukhibhava.ap.gov.in"}
+  ],
+  "related_services": [],
+  "sources": [
+    "UNI and PTI news reports (June 2026 and July 2025)",
+    "Vikaspedia scheme page",
+    "indianpaycalculator.in and sarkariyojana.com (unofficial)"
+  ],
+  "verification": {
+    "links_verified": false,
+    "content_verified": false,
+    "last_verified": null,
+    "open_items": ["portal link", "exact eligibility and exclusions", "tenant farmer rules", "e-KYC steps", "next instalment date", "helpline"]
+  }
+}
