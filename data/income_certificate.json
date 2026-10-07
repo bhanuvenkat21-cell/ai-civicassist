@@ -1,0 +1,66 @@
+{
+  "id": "ap-income-certificate",
+  "name": {"en": "Income Certificate", "te": "ఆదాయ ధృవపత్రం", "hi": "आय प्रमाण पत्र"},
+  "level": "AP",
+  "category": "Certificates",
+  "type": "service",
+  "department": "Revenue (Swarna Gramam and Swarna Wardu services)",
+  "eligibility": {
+    "state": "Andhra Pradesh",
+    "who": "AP resident; applying on the applicant's own income or a parent's income",
+    "income_limit": null,
+    "income_limit_note": "To confirm. Video narrator mentioned rural ~Rs 1.2 lakh, urban ~Rs 1.44 lakh (scholarship context); not verified."
+  },
+  "purposes": [
+    "State Govt EWS Certificate",
+    "Central Govt schemes",
+    "State Employment Purpose",
+    "Central Employment Purpose",
+    "State Govt Scholarship/Admissions",
+    "Central Govt Scholarship/Admissions",
+    "State Govt Welfare Schemes",
+    "Central Govt EWS Certificate"
+  ],
+  "details_asked": [
+    "Aadhaar number", "Name", "Father/husband name", "Gender", "Marital status",
+    "Caste", "Religion", "Qualification", "Date of birth", "Mobile number (verified)",
+    "Permanent and present address", "Applicant or parent income", "Ration card number",
+    "Income from land, business, buildings, labour, spouse salary, other sources"
+  ],
+  "documents": [
+    {"name": "Filled income self-declaration form", "why": "Your declared income sources and total", "if_missing": "Download the official form from the Downloads menu of the AP Seva or MeeSeva portal"},
+    {"name": "Ration card / SPDC card / Aadhaar card copy", "why": "Identity and family details", "if_missing": "Ask at your village/ward secretariat"},
+    {"name": "IT return, pay slip or other income proof", "why": "Supports the income you declared", "if_missing": "Ask at your village/ward secretariat"}
+  ],
+  "upload_rules": "PDF format, maximum 1 MB per file (portal note)",
+  "steps": [
+    "Open the AP Seva portal and log in as a citizen",
+    "Go to Application Submission, then Revenue, then Income Certificate",
+    "Basic Details tab: Aadhaar pre-fill, fill details, verify mobile number",
+    "Application Form tab: choose the purpose, applicant or parent income, enter income details",
+    "Upload the documents (PDF, up to 1 MB each)",
+    "Tick the consent boxes and click Show Payment",
+    "Pay online",
+    "Application goes to the mandal revenue office",
+    "Track status on the portal home page with your Aadhaar or service request number, then download the certificate"
+  ],
+  "fee": {"amount_inr": 50, "mode": "Online (card, net banking, UPI, BHIM via BillDesk)", "note": "Seen on the payment screen in a 2026 video; an older page said Rs 35 at MeeSeva centres. Confirm."},
+  "processing": {"sla_days": 7, "stages": ["Digital Assistant (0 days)", "Village Revenue Officer (2)", "Revenue Inspector (2)", "Deputy Tahsildar (3)"]},
+  "validity": null,
+  "validity_note": "To confirm. A sample EWS certificate said 'Valid for the year 2024-2025'; an older guide said one year.",
+  "official_links": [
+    {"label": "AP Seva portal", "url": "https://apseva.ap.gov.in/#/home"},
+    {"label": "MeeSeva AP", "url": "https://ap.meeseva.gov.in/IMeeSeva2/IMeesevaHome.aspx"}
+  ],
+  "sources": [
+    "Telugu tutorial video: AP Income Certificate Apply Online 2026 (Shreyas Infotech), unofficial",
+    "AP government SOP (vswsonline.ap.gov.in)",
+    "Official portal home pages (links confirmed to open)"
+  ],
+  "verification": {
+    "links_verified": true,
+    "content_verified": false,
+    "last_verified": "06/10/2026",
+    "open_items": ["income_limit", "validity", "fee"]
+  }
+}
