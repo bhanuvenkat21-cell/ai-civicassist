@@ -1,10 +1,8 @@
-// Minimal service worker: makes the app installable and keeps the page shell available.
-const CACHE = "civicassist-v1";
+// Minimal service worker: installable app, page shell available offline.
+const CACHE = "civicassist-v2";
 
 self.addEventListener("install", (e) => {
-  e.waitUntil(
-    caches.open(CACHE).then((c) => c.add("/")).then(() => self.skipWaiting())
-  );
+  e.waitUntil(caches.open(CACHE).then((c) => c.add("/")).then(() => self.skipWaiting()));
 });
 
 self.addEventListener("activate", (e) => {
@@ -20,36 +18,20 @@ self.addEventListener("fetch", (e) => {
   const req = e.request;
   if (req.method !== "GET") return;
   const url = new URL(req.url);
+  // Never cache on localhost, so local development never shows stale files.
+  if (self.location.hostname === "localhost") return;
   if (url.origin !== self.location.origin || url.pathname.startsWith("/api/")) return;
 
-  // Page: network first, fall back to the cached copy when offline.
-  if (req.mode === "navigate") {
+  // Pages and app files: network first, cached copy only when offline.
+  if (req.mode === "navigate" || url.pathname.startsWith("/_next/static/")) {
     e.respondWith(
       fetch(req)
         .then((res) => {
-          if (url.pathname === "/") {
-            const copy = res.clone();
-            caches.open(CACHE).then((c) => c.put("/", copy));
-          }
+          const copy = res.clone();
+          caches.open(CACHE).then((c) => c.put(req.mode === "navigate" ? "/" : req, copy));
           return res;
         })
-        .catch(() => caches.match("/"))
-    );
-    return;
-  }
-
-  // App files: cache first so the app can start offline.
-  if (url.pathname.startsWith("/_next/static/")) {
-    e.respondWith(
-      caches.match(req).then(
-        (hit) =>
-          hit ||
-          fetch(req).then((res) => {
-            const copy = res.clone();
-            caches.open(CACHE).then((c) => c.put(req, copy));
-            return res;
-          })
-      )
+        .catch(() => caches.match(req.mode === "navigate" ? "/" : req))
     );
   }
 });
