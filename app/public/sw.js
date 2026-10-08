@@ -1,5 +1,5 @@
 // Minimal service worker: installable app, page shell available offline.
-const CACHE = "civicassist-v2";
+const CACHE = "JanSeva AI";
 
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.add("/")).then(() => self.skipWaiting()));

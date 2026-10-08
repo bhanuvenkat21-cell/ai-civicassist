@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     "Find Andhra Pradesh government schemes and services, with document checklists and step-by-step guidance.",
   applicationName: "JanSeva AI",
-  appleWebApp: { capable: true, title: "CivicAssist", statusBarStyle: "default" },
+  appleWebApp: { capable: true, title: "JanSeva AI", statusBarStyle: "default" },
   icons: { icon: "/icon-192.png", apple: "/apple-icon.png" },
 };
 
