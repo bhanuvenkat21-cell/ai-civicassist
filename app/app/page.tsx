@@ -280,7 +280,7 @@ export default function Home() {
 
   return (
     <main className="mx-auto flex h-dvh max-w-md flex-col bg-[#F1F7F3] text-[#10261D]">
-      <header className="bg-gradient-to-br from-[#0F6B4F] to-[#1A9B6F] px-5 pt-5 pb-5 text-white">
+      <header className="bg-linear-to-br from-[#0F6B4F] to-[#1A9B6F] px-5 pt-5 pb-5 text-white">
         <div className="flex items-center justify-between gap-2">
           <h1 className="text-xl font-bold">{t.title}</h1>
           <div className="flex rounded-full bg-white/15 p-1">
