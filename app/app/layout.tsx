@@ -2,10 +2,10 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "AI CivicAssist",
+  title: "JanSeva AI",
   description:
     "Find Andhra Pradesh government schemes and services, with document checklists and step-by-step guidance.",
-  applicationName: "AI CivicAssist",
+  applicationName: "JanSeva AI",
   appleWebApp: { capable: true, title: "CivicAssist", statusBarStyle: "default" },
   icons: { icon: "/icon-192.png", apple: "/apple-icon.png" },
 };

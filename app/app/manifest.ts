@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "AI CivicAssist",
-    short_name: "CivicAssist",
+    name: "JanSeva AI",
+    short_name: "JanSeva AI",
     description:
       "Find Andhra Pradesh government schemes and services, with document checklists and step-by-step guidance.",
     start_url: "/",
