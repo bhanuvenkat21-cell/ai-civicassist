@@ -15,7 +15,7 @@ type Msg =
 
 const T = {
   en: {
-    title: "AI CivicAssist",
+    title: "JanSeva AI",
     sub: "Find schemes and services you qualify for",
     welcome:
       "Hello! Tell me what you need: a scholarship, certificate, pension, health cover or farmer support.",

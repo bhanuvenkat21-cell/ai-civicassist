@@ -1,4 +1,4 @@
-# AI CivicAssist
+# JanSeva AI
 
 VORTEX 2K26 | Team Syntax | Theme: AI for Bharat & Public Services
 
