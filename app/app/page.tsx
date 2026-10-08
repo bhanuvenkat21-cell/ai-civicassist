@@ -132,7 +132,7 @@ function Detail({ id, lang, onOpen }: { id: string; lang: Lang; onOpen: (id: str
   return (
     <div className="space-y-4">
       <div className="flex items-start gap-3">
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#E8EDFA] text-2xl">
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#E3F3EA] text-2xl">
           {ICON[s.category] ?? "📌"}
         </div>
         <div>
@@ -151,10 +151,10 @@ function Detail({ id, lang, onOpen }: { id: string; lang: Lang; onOpen: (id: str
       <div>
         <div className="mb-2 flex items-center justify-between">
           <span className="text-xs font-bold tracking-wide text-slate-500 uppercase">{t.docs}</span>
-          <span className="text-xs font-semibold text-[#1F3A8A]">{count}/{total} {t.ready}</span>
+          <span className="text-xs font-semibold text-[#0F6B4F]">{count}/{total} {t.ready}</span>
         </div>
         <div className="mb-3 h-1.5 overflow-hidden rounded-full bg-slate-200">
-          <div className="h-full rounded-full bg-[#1F3A8A] transition-all" style={{ width: `${pct}%` }} />
+          <div className="h-full rounded-full bg-[#0F6B4F] transition-all" style={{ width: `${pct}%` }} />
         </div>
         <ul className="space-y-2">
           {s.documents.map((d, i) => (
@@ -164,7 +164,7 @@ function Detail({ id, lang, onOpen }: { id: string; lang: Lang; onOpen: (id: str
                   type="checkbox"
                   checked={!!done[i]}
                   onChange={() => setDone((p) => ({ ...p, [i]: !p[i] }))}
-                  className="mt-0.5 h-5 w-5 accent-[#1F3A8A]"
+                  className="mt-0.5 h-5 w-5 accent-[#0F6B4F]"
                 />
                 <span>
                   <span className={`font-semibold ${done[i] ? "text-slate-400 line-through" : ""}`}>{d.name}</span>
@@ -174,7 +174,7 @@ function Detail({ id, lang, onOpen }: { id: string; lang: Lang; onOpen: (id: str
               {d.linked_service && getService(d.linked_service) && (
                 <button
                   onClick={() => onOpen(d.linked_service as string)}
-                  className="mt-2 min-h-11 w-full rounded-lg border border-[#1F3A8A] px-3 text-sm font-semibold text-[#1F3A8A] active:bg-[#E8EDFA]"
+                  className="mt-2 min-h-11 w-full rounded-lg border border-[#0F6B4F] px-3 text-sm font-semibold text-[#0F6B4F] active:bg-[#E3F3EA]"
                 >
                   {t.missing} →
                 </button>
@@ -190,10 +190,10 @@ function Detail({ id, lang, onOpen }: { id: string; lang: Lang; onOpen: (id: str
           {s.steps.map((st, i) => (
             <li key={i} className="flex gap-3">
               <div className="flex flex-col items-center">
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#1F3A8A] text-xs font-bold text-white">
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#0F6B4F] text-xs font-bold text-white">
                   {i + 1}
                 </span>
-                {i < s.steps.length - 1 && <span className="my-1 w-0.5 flex-1 bg-[#C9D3F0]" />}
+                {i < s.steps.length - 1 && <span className="my-1 w-0.5 flex-1 bg-[#BFE0CF]" />}
               </div>
               <span className="pb-4 text-sm leading-relaxed">{st}</span>
             </li>
@@ -206,7 +206,7 @@ function Detail({ id, lang, onOpen }: { id: string; lang: Lang; onOpen: (id: str
           href={link.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex min-h-12 items-center justify-center rounded-xl bg-[#F4A62A] font-bold text-slate-900 shadow-sm active:opacity-90"
+          className="flex min-h-12 items-center justify-center rounded-xl bg-[#F28C28] font-bold text-slate-900 shadow-sm active:opacity-90"
         >
           {t.portal} ↗
         </a>
@@ -279,8 +279,8 @@ export default function Home() {
   }
 
   return (
-    <main className="mx-auto flex h-dvh max-w-md flex-col bg-[#F3F6FA] text-[#14213D]">
-      <header className="bg-gradient-to-br from-[#1F3A8A] to-[#2F55C8] px-5 pt-5 pb-5 text-white">
+    <main className="mx-auto flex h-dvh max-w-md flex-col bg-[#F1F7F3] text-[#10261D]">
+      <header className="bg-gradient-to-br from-[#0F6B4F] to-[#1A9B6F] px-5 pt-5 pb-5 text-white">
         <div className="flex items-center justify-between gap-2">
           <h1 className="text-xl font-bold">{t.title}</h1>
           <div className="flex rounded-full bg-white/15 p-1">
@@ -289,7 +289,7 @@ export default function Home() {
                 key={l.code}
                 onClick={() => setLang(l.code)}
                 className={`h-9 min-w-11 rounded-full px-3 text-sm font-bold ${
-                  lang === l.code ? "bg-white text-[#1F3A8A]" : "text-white"
+                  lang === l.code ? "bg-white text-[#0F6B4F]" : "text-white"
                 }`}
               >
                 {l.label}
@@ -297,7 +297,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-        <p className="mt-2 text-sm text-[#D5DCF5]">{t.sub}</p>
+        <p className="mt-2 text-sm text-[#CFEBDD]">{t.sub}</p>
         <div className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-xs">
           <span>🛡️</span>
           <span>{t.trust}</span>
@@ -315,7 +315,7 @@ export default function Home() {
                 <button
                   key={id}
                   onClick={() => openService(id)}
-                  className="flex min-h-16 items-center gap-3 rounded-2xl border border-slate-200 bg-white p-3 text-left shadow-sm active:bg-[#E8EDFA]"
+                  className="flex min-h-16 items-center gap-3 rounded-2xl border border-slate-200 bg-white p-3 text-left shadow-sm active:bg-[#E3F3EA]"
                 >
                   <span className="text-2xl">{ICON[s.category] ?? "📌"}</span>
                   <span className="text-sm leading-tight font-semibold">{SHORT[id][lang]}</span>
@@ -331,7 +331,7 @@ export default function Home() {
           {msgs.map((m, i) => {
             if (m.role === "user")
               return (
-                <div key={i} className="ml-auto max-w-[85%] rounded-2xl rounded-br-sm bg-[#1F3A8A] p-3 text-sm text-white shadow-sm">
+                <div key={i} className="ml-auto max-w-[85%] rounded-2xl rounded-br-sm bg-[#0F6B4F] p-3 text-sm text-white shadow-sm">
                   {m.text}
                 </div>
               );
@@ -353,11 +353,11 @@ export default function Home() {
                         <button
                           key={id}
                           onClick={() => openService(id)}
-                          className="flex min-h-12 w-full items-center gap-3 rounded-xl border border-slate-200 px-3 text-left text-sm font-semibold active:bg-[#E8EDFA]"
+                          className="flex min-h-12 w-full items-center gap-3 rounded-xl border border-slate-200 px-3 text-left text-sm font-semibold active:bg-[#E3F3EA]"
                         >
                           <span className="text-xl">{ICON[s.category] ?? "📌"}</span>
                           <span className="flex-1">{s.name[lang] ?? s.name.en}</span>
-                          <span className="text-xs font-bold text-[#1F3A8A]">{t.view} →</span>
+                          <span className="text-xs font-bold text-[#0F6B4F]">{t.view} →</span>
                         </button>
                       );
                     })}
@@ -373,7 +373,7 @@ export default function Home() {
 
           {loading && (
             <div className="inline-flex items-center gap-2 rounded-2xl rounded-bl-sm bg-white p-3 text-sm text-slate-500 shadow-sm">
-              <span className="h-2 w-2 animate-pulse rounded-full bg-[#1F3A8A]" />
+              <span className="h-2 w-2 animate-pulse rounded-full bg-[#0F6B4F]" />
               {t.thinking}
             </div>
           )}
@@ -388,7 +388,7 @@ export default function Home() {
               key={p}
               onClick={() => send(p)}
               disabled={loading}
-              className="shrink-0 rounded-full border border-[#C9D3F0] bg-[#F3F6FA] px-3 py-1.5 text-xs font-semibold text-[#1F3A8A] disabled:opacity-50"
+              className="shrink-0 rounded-full border border-[#BFE0CF] bg-[#F1F7F3] px-3 py-1.5 text-xs font-semibold text-[#0F6B4F] disabled:opacity-50"
             >
               {p}
             </button>
@@ -401,12 +401,12 @@ export default function Home() {
             onKeyDown={(e) => e.key === "Enter" && send()}
             placeholder={t.placeholder}
             aria-label={t.placeholder}
-            className="h-12 flex-1 rounded-full border border-slate-300 bg-[#F8FAFC] px-4 text-sm outline-none focus:border-[#1F3A8A]"
+            className="h-12 flex-1 rounded-full border border-slate-300 bg-[#F8FAFC] px-4 text-sm outline-none focus:border-[#0F6B4F]"
           />
           <button
             onClick={() => send()}
             disabled={loading}
-            className="h-12 rounded-full bg-[#F4A62A] px-5 text-sm font-bold text-slate-900 shadow-sm disabled:opacity-50"
+            className="h-12 rounded-full bg-[#F28C28] px-5 text-sm font-bold text-slate-900 shadow-sm disabled:opacity-50"
           >
             {t.send}
           </button>
@@ -419,7 +419,7 @@ export default function Home() {
                 await installEvt.prompt();
                 setInstallEvt(null);
               }}
-              className="min-h-11 rounded-full border border-[#1F3A8A] px-4 text-sm font-bold text-[#1F3A8A]"
+              className="min-h-11 rounded-full border border-[#0F6B4F] px-4 text-sm font-bold text-[#0F6B4F]"
             >
               {t.install}
             </button>
