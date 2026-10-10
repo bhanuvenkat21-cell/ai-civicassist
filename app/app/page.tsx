@@ -15,7 +15,7 @@ type Msg =
 
 const T = {
   en: {
-    title: "JanSeva AI",
+    title: "AI CivicAssist",
     sub: "Find schemes and services you qualify for",
     welcome:
       "Hello! Tell me what you need: a scholarship, certificate, pension, health cover or farmer support.",
@@ -25,13 +25,16 @@ const T = {
     thinking: "Thinking...",
     install: "Install app",
     popular: "Popular services",
+    recent: "Recent searches",
+    clearHistory: "Clear",
+    savedHere: "Saved on this device only",
     ready: "ready",
     verifiedBadge: "Verified",
     unverifiedBadge: "Needs official confirmation",
     trust: "Answers come only from our AP services data",
     prompts: ["I need a scholarship", "Pension for my mother", "Help for farmers"],
     notFound:
-      "I could not find a matching service yet. Try words like scholarship, income certificate, caste certificate, pension, Aarogyasri or farmer.",
+      "I can help with AP services: scholarship, income certificate, caste certificate, Aarogyasri health cover, pension and farmer support. Tell me what you need.",
     found: "I found these services for you:",
     view: "View details",
     docs: "Documents you need",
@@ -53,13 +56,16 @@ const T = {
     thinking: "ఆలోచిస్తున్నాను...",
     install: "యాప్ ఇన్‌స్టాల్ చేయండి",
     popular: "ప్రముఖ సేవలు",
+    recent: "ఇటీవలి శోధనలు",
+    clearHistory: "తొలగించు",
+    savedHere: "ఈ పరికరంలో మాత్రమే సేవ్ అవుతుంది",
     ready: "సిద్ధం",
     verifiedBadge: "ధృవీకరించబడింది",
     unverifiedBadge: "అధికారిక నిర్ధారణ అవసరం",
     trust: "సమాధానాలు మా ఏపీ సేవల డేటా నుండి మాత్రమే",
     prompts: ["స్కాలర్‌షిప్ కావాలి", "అమ్మకు పెన్షన్", "రైతు సహాయం"],
     notFound:
-      "సరిపోయే సేవ ఇంకా కనబడలేదు. స్కాలర్‌షిప్, ఆదాయ ధృవపత్రం, కుల ధృవపత్రం, పెన్షన్, ఆరోగ్యశ్రీ లేదా రైతు వంటి పదాలు ప్రయత్నించండి.",
+      "నేను ఏపీ సేవలలో సహాయం చేయగలను: స్కాలర్‌షిప్, ఆదాయ ధృవపత్రం, కుల ధృవపత్రం, ఆరోగ్యశ్రీ, పెన్షన్, రైతు సహాయం. మీకు ఏమి కావాలో చెప్పండి.",
     found: "మీ కోసం ఈ సేవలు కనుగొన్నాను:",
     view: "వివరాలు చూడండి",
     docs: "మీకు కావలసిన పత్రాలు",
@@ -81,13 +87,16 @@ const T = {
     thinking: "सोच रहा हूँ...",
     install: "ऐप इंस्टॉल करें",
     popular: "लोकप्रिय सेवाएँ",
+    recent: "हाल की खोजें",
+    clearHistory: "मिटाएँ",
+    savedHere: "केवल इस डिवाइस पर सहेजा गया",
     ready: "तैयार",
     verifiedBadge: "सत्यापित",
     unverifiedBadge: "आधिकारिक पुष्टि आवश्यक",
     trust: "उत्तर केवल हमारे आंध्र प्रदेश सेवा डेटा से",
     prompts: ["मुझे छात्रवृत्ति चाहिए", "माँ के लिए पेंशन", "किसान सहायता"],
     notFound:
-      "अभी कोई मिलती-जुलती सेवा नहीं मिली। छात्रवृत्ति, आय प्रमाणपत्र, जाति प्रमाणपत्र, पेंशन, आरोग्यश्री या किसान जैसे शब्द आज़माएँ।",
+      "मैं आंध्र प्रदेश की सेवाओं में मदद कर सकता हूँ: छात्रवृत्ति, आय प्रमाणपत्र, जाति प्रमाणपत्र, आरोग्यश्री, पेंशन और किसान सहायता। बताइए आपको क्या चाहिए।",
     found: "आपके लिए ये सेवाएँ मिलीं:",
     view: "विवरण देखें",
     docs: "आवश्यक दस्तावेज़",
@@ -223,6 +232,8 @@ export default function Home() {
   const [input, setInput] = useState("");
   const [msgs, setMsgs] = useState<Msg[]>([]);
   const [loading, setLoading] = useState(false);
+  const [history, setHistory] = useState<string[]>([]);
+  const [loaded, setLoaded] = useState(false);
   const [installEvt, setInstallEvt] = useState<InstallEvent | null>(null);
   const endRef = useRef<HTMLDivElement>(null);
   const t = T[lang];
@@ -243,11 +254,37 @@ export default function Home() {
     return () => window.removeEventListener("beforeinstallprompt", onPrompt);
   }, []);
 
+  // Load saved history and chat from this device.
+  useEffect(() => {
+    try {
+      const h = JSON.parse(localStorage.getItem("civic_history") ?? "[]");
+      if (Array.isArray(h)) setHistory(h.filter((x) => typeof x === "string").slice(0, 8));
+      const m = JSON.parse(localStorage.getItem("civic_msgs") ?? "[]");
+      if (Array.isArray(m)) setMsgs(m);
+    } catch {}
+    setLoaded(true);
+  }, []);
+
+  // Save them whenever they change.
+  useEffect(() => {
+    if (!loaded) return;
+    try {
+      localStorage.setItem("civic_history", JSON.stringify(history));
+      localStorage.setItem("civic_msgs", JSON.stringify(msgs.slice(-30)));
+    } catch {}
+  }, [history, msgs, loaded]);
+
+  function clearHistory() {
+    setHistory([]);
+    setMsgs([]);
+  }
+
   async function send(text?: string) {
     const q = (text ?? input).trim();
     if (!q || loading) return;
     setMsgs((m) => [...m, { role: "user", text: q }]);
     setInput("");
+    setHistory((h) => [q, ...h.filter((x) => x !== q)].slice(0, 8));
     setLoading(true);
     try {
       const res = await fetch("/api/chat", {
@@ -280,7 +317,7 @@ export default function Home() {
 
   return (
     <main className="mx-auto flex h-dvh max-w-md flex-col bg-[#F1F7F3] text-[#10261D]">
-      <header className="bg-linear-to-br from-[#0F6B4F] to-[#1A9B6F] px-5 pt-5 pb-5 text-white">
+      <header className="bg-gradient-to-br from-[#0F6B4F] to-[#1A9B6F] px-5 pt-5 pb-5 text-white">
         <div className="flex items-center justify-between gap-2">
           <h1 className="text-xl font-bold">{t.title}</h1>
           <div className="flex rounded-full bg-white/15 p-1">
@@ -324,6 +361,30 @@ export default function Home() {
             })}
           </div>
         </section>
+
+        {history.length > 0 && (
+          <section className="px-4 pt-4">
+            <div className="mb-1 flex items-center justify-between">
+              <span className="text-xs font-bold tracking-wide text-slate-500 uppercase">{t.recent}</span>
+              <button onClick={clearHistory} className="min-h-11 px-2 text-xs font-semibold text-[#0F6B4F]">
+                {t.clearHistory}
+              </button>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {history.map((h) => (
+                <button
+                  key={h}
+                  onClick={() => send(h)}
+                  disabled={loading}
+                  className="rounded-full border border-[#BFE0CF] bg-white px-3 py-1.5 text-xs font-semibold text-[#0F6B4F] disabled:opacity-50"
+                >
+                  🕘 {h}
+                </button>
+              ))}
+            </div>
+            <p className="mt-1 text-xs text-slate-400">{t.savedHere}</p>
+          </section>
+        )}
 
         <div className="space-y-3 p-4">
           <div className="max-w-[88%] rounded-2xl rounded-bl-sm bg-white p-3 text-sm shadow-sm">{t.welcome}</div>
@@ -382,7 +443,7 @@ export default function Home() {
       </div>
 
       <footer className="border-t border-slate-200 bg-white px-3 pt-2 pb-3">
-        <div className="mb-2 flex gap-2 overflow-x-auto pb-1">
+        <div className="mb-2 flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {t.prompts.map((p) => (
             <button
               key={p}
